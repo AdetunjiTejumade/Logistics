@@ -1,0 +1,9 @@
+<%= link_to 'Back to Home', root_path %>
+<%= form_with model: @warehouse do |form| %>
+  <%= form.label :location, "Location" %>
+  <%= form.text_field :location %>
+    <% @warehouse.errors.full_messages_for(:location).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+   <%= form.submit %>
+<% end %>

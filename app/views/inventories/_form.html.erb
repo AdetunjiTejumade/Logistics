@@ -1,0 +1,17 @@
+<%= link_to 'Back to Inventories', inventories_path %>
+<%= form_with model: @inventory do |form| %>
+  <%= form.label :item, "Item" %>
+  <%= form.text_field :item %>
+    <% @inventory.errors.full_messages_for(:item).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  <%= form.label :quantity, "Quantity" %>
+  <%= form.text_field :quantity %>
+    <% @inventory.errors.full_messages_for(:quantity).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+    <%= form.label :warehouse %>
+<%= form.collection_select :warehouse_id, Warehouse.all, :id, :location, include_blank: false %>
+
+   <%= form.submit %>
+<% end %>

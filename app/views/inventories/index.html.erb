@@ -1,0 +1,28 @@
+
+
+<ul>
+<h1>Warehouse</h1>
+<%= link_to 'Add warehouse', new_warehouse_path %>
+<br>
+<% @warehouses.each do |warehouse| %>
+    <div>
+    <p><%= warehouse.location %> </p>
+    </div>
+<% end %>
+<br>
+<h1>Inventory</h1>
+<%= link_to 'Add item', new_inventory_path %>
+<br>
+<% @inventories.each do |item| %>
+<div>
+            <%= item.item %><br>
+            <%= item.quantity %><br>
+            <%= item.warehouse.location %>
+                <%= button_to "Delete",
+                    inventory_path(item),
+                    method: :delete %>
+        <%= link_to "Edit",
+                    edit_inventory_path(item) %>
+        </div>
+<% end %>
+</ul>
